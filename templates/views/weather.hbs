@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="css/style.css">
+    <title>Weather</title>
+</head>
+<body>
+    
+     {{>navbar}}
+
+    <div class="container-fluid ">
+      <div class="row">
+          <div class=" col-12 mx-lg-0">
+           <div class="main_content">
+             <form class="temp_form">
+               <input type="text" id="cityname" placeholder="Enter The Place Name">
+               <input type="submit" value="Search" id="submitBtn">
+             </form>
+           </div>
+           <div class="tempInfo">
+             <div class="top_layer">
+               <p id="day">Tuesday</p>
+               <p id="today_date">17 march</p>
+             </div>
+             <div class="main_layer">
+               <p id="city_name"></p>
+               <div class="mid_layer data_hide">
+                    <p id="temp"><span id="temp_real">0</span><sup>0</sup>C</p>
+                   <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+               </div>
+             </div>
+           </div>
+          </div>
+        </div>
+    </div>
+    {{>footer}}
+   <script src="js/main.js"></script>
+   <script>
+     
+     const getCurrentDay = () =>{
+       let weekday = new Array(7);
+       weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+       let currentTime = new Date();
+       days = weekday[currentTime.getDay()];
+       let day = document.getElementById('day');
+       day.innerText = days;
+     }
+     getCurrentDay();
+     const getCurrentTime = () => {
+        var months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "June",
+          "July",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        var now = new Date();
+        var month = months[now.getMonth() ];
+        var date = now.getDate();
+        let today_date=document.getElementById('today_date')
+  today_date.innerText=`${date} ${month}`}
+getCurrentTime();
+   </script>
+</body>
+</html>
